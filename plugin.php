@@ -1,7 +1,7 @@
 <?php
-namespace ElementorHelloWorld;
+namespace PersonaCore;
 
-use ElementorHelloWorld\PageSettings\Page_Settings;
+use PersonaCore\PageSettings\Page_Settings;
 
 /**
  * Class Plugin
@@ -9,7 +9,7 @@ use ElementorHelloWorld\PageSettings\Page_Settings;
  * Main Plugin class
  * @since 1.2.0
  */
-class Plugin {
+class Persona_Core_Plugin {
 
 	/**
 	 * Instance
@@ -148,4 +148,4 @@ class Plugin {
 }
 
 // Instantiate Plugin Class
-Plugin::instance();
+Persona_Core_Plugin::instance();

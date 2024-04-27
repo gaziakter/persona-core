@@ -1,5 +1,5 @@
 <?php
-namespace ElementorHelloWorld\Widgets;
+namespace PersonaCore\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;

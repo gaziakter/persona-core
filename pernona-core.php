@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Any custom code should go inside Plugin Class in the plugin.php file.
  * @since 1.2.0
  */
-final class Elementor_Hello_World {
+final class Persona_Core_Elements {
 
 	/**
 	 * Plugin Version
@@ -32,7 +32,7 @@ final class Elementor_Hello_World {
 	 * @since 1.2.1
 	 * @var string The plugin version.
 	 */
-	const VERSION = '1.2.1';
+	const VERSION = '1.0.0';
 
 	/**
 	 * Minimum Elementor Version
@@ -113,9 +113,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
-			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'elementor-hello-world' ) . '</strong>'
+			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'persona-core' ),
+			'<strong>' . esc_html__( 'Persona Core', 'persona-core' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'persona-core' ) . '</strong>'
 		);
 
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
@@ -136,9 +136,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor 3: Required Elementor version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'Elementor', 'elementor-hello-world' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'persona-core' ),
+			'<strong>' . esc_html__( 'Persona Core', 'persona-core' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor', 'persona-core' ) . '</strong>',
 			self::MINIMUM_ELEMENTOR_VERSION
 		);
 
@@ -160,9 +160,9 @@ final class Elementor_Hello_World {
 
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'elementor-hello-world' ),
-			'<strong>' . esc_html__( 'Elementor Hello World', 'elementor-hello-world' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'elementor-hello-world' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'persona-core' ),
+			'<strong>' . esc_html__( 'Persona Core', 'persona-core' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'persona-core' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
 
@@ -170,5 +170,5 @@ final class Elementor_Hello_World {
 	}
 }
 
-// Instantiate Elementor_Hello_World.
-new Elementor_Hello_World();
+// Instantiate Persona_Core_Elements.
+new Persona_Core_Elements();
