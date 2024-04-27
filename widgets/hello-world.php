@@ -97,46 +97,32 @@ class Hello_World extends Widget_Base {
 	 * @access protected
 	 */
 	protected function register_controls() {
+
 		$this->start_controls_section(
-			'section_content',
+			'persoan_title_section',
 			[
-				'label' => __( 'Content', 'elementor-hello-world' ),
+				'label' => esc_html__( 'Title and Content', 'persona-core' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$this->add_control(
-			'title',
+			'section_title',
 			[
-				'label' => __( 'Title', 'elementor-hello-world' ),
-				'type' => Controls_Manager::TEXT,
-			]
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'section_style',
-			[
-				'label' => __( 'Style', 'elementor-hello-world' ),
-				'tab' => Controls_Manager::TAB_STYLE,
+				'label' => esc_html__( 'Title', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Default title', 'persona-core' ),
+				'placeholder' => esc_html__( 'Type your title here', 'persona-core' ),
 			]
 		);
 
 		$this->add_control(
-			'text_transform',
+			'section_sub_title',
 			[
-				'label' => __( 'Text Transform', 'elementor-hello-world' ),
-				'type' => Controls_Manager::SELECT,
-				'default' => '',
-				'options' => [
-					'' => __( 'None', 'elementor-hello-world' ),
-					'uppercase' => __( 'UPPERCASE', 'elementor-hello-world' ),
-					'lowercase' => __( 'lowercase', 'elementor-hello-world' ),
-					'capitalize' => __( 'Capitalize', 'elementor-hello-world' ),
-				],
-				'selectors' => [
-					'{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
-				],
+				'label' => esc_html__( 'Sub Title', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Default Sub title', 'persona-core' ),
+				'placeholder' => esc_html__( 'Type your sub title here', 'persona-core' ),
 			]
 		);
 
@@ -154,26 +140,16 @@ class Hello_World extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-		echo '<div class="title">';
-		echo $settings['title'];
-		echo '</div>';
-	}
-
-	/**
-	 * Render the widget output in the editor.
-	 *
-	 * Written as a Backbone JavaScript template and used to generate the live preview.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @access protected
-	 */
-	protected function content_template() {
 		?>
-		<div class="title">
-			{{{ settings.title }}}
+		<div class="section-title">
+			<span><?php echo esc_html( $settings['section_sub_title'] ); ?> </span>
+			<h2><?php echo esc_html( $settings['section_title'] ); ?></h2>
+
 		</div>
+
+
+
+
 		<?php
 	}
 }
