@@ -52,6 +52,23 @@ class Persona_Core_Plugin {
 	}
 
 	/**
+	 * Widgets Category
+	 *
+	 * @param [type] $elements_manager
+	 * @return void
+	 */
+	public function persona_add_elementor_widget_categories( $persona_add_cat ) {
+
+		$persona_add_cat->add_category(
+			'persona-category',
+			[
+				'title' => esc_html__( 'Persona Core', 'persona-core' ),
+				'icon' => 'fa fa-plug',
+			]
+		);	
+	}
+
+	/**
 	 * Editor scripts
 	 *
 	 * Enqueue plugin javascripts integrations for Elementor editor.
@@ -133,6 +150,9 @@ class Persona_Core_Plugin {
 	 * @access public
 	 */
 	public function __construct() {
+
+		// Add New Category
+		add_action( 'elementor/elements/categories_registered',  [ $this, 'persona_add_elementor_widget_categories' ] );
 
 		// Register widget scripts
 		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
