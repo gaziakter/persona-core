@@ -120,11 +120,11 @@ class Persona_Core_Plugin {
 	 */
 	public function register_widgets( $widgets_manager ) {
 		// Its is now safe to include Widgets files
-		require_once( __DIR__ . '/widgets/hello-world.php' );
 		require_once( __DIR__ . '/widgets/inline-editing.php' );
+		require_once( __DIR__ . '/widgets/hero.php' );
 
 		// Register Widgets
-		$widgets_manager->register( new Widgets\Hello_World() );
+		$widgets_manager->register( new Widgets\Persona_Hero_Widget() );
 		$widgets_manager->register( new Widgets\Inline_Editing() );
 	}
 
