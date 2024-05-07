@@ -166,9 +166,14 @@ class Persona_Hero_Widget extends Widget_Base {
 			'hero_button_url',
 			[
 				'label' => esc_html__( 'Button URL', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( '#', 'persona-core' ),
-				'placeholder' => esc_html__( 'Insert here your button url', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+					// 'custom_attributes' => '',
+				],
 				'label_block' => true,
 			]
 		);
@@ -187,6 +192,9 @@ class Persona_Hero_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+		if ( ! empty( $settings['hero_button_url']['url'] ) ) {
+			$this->add_link_attributes( 'hero_button_url', $settings['hero_button_url'] );
+		}
 		?>
 
          <!-- slider area start -->
@@ -208,7 +216,7 @@ class Persona_Hero_Widget extends Widget_Base {
 
 						   <?php if(!empty($settings['hero_button_text'])): ?>
                            <div class="slider__btn-9 mb-85">
-                              <a href="<?php echo esc_url( $settings['hero_button_url'] ); ?>" class="tp-btn-5 tp-link-btn-3"> 
+                              <a <?php $this->print_render_attribute_string( 'hero_button_url' ); ?> class="tp-btn-5 tp-link-btn-3"> 
 							  <?php echo esc_html( $settings['hero_button_text'] ); ?> 
                                  <span>
                                     <i class="fa-regular fa-arrow-right"></i>
