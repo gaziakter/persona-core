@@ -178,6 +178,31 @@ class Persona_Hero_Widget extends Widget_Base {
 			]
 		);
 
+
+		$this->end_controls_section();
+
+
+
+		/** Image Section */
+		$this->start_controls_section(
+			'persoan_hero_img_section',
+			[
+				'label' => esc_html__( 'Hero Image', 'persona-core' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'hero_image',
+			[
+				'label' => esc_html__( 'Choose Image', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -195,6 +220,10 @@ class Persona_Hero_Widget extends Widget_Base {
 		if ( ! empty( $settings['hero_button_url']['url'] ) ) {
 			$this->add_link_attributes( 'hero_button_url', $settings['hero_button_url'] );
 		}
+		if ( empty( $settings['hero_image']['url'] ) ) {
+			return;
+		}
+
 		?>
 
          <!-- slider area start -->
@@ -270,7 +299,7 @@ class Persona_Hero_Widget extends Widget_Base {
                                  <img class="layer" data-depth=".3" src="assets/img/slider/9/slider-shape-2.png" alt="">
                               </div>
                            </div>
-                           <img class="slider__thumb-9-main" src="assets/img/slider/9/slider-1.png" alt="">
+                           <img class="slider__thumb-9-main" src="<?php echo esc_url( $settings['hero_image']['url'] );?> alt">
                         </div>
                      </div>
                   </div>
