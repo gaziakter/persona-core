@@ -111,7 +111,7 @@ class Persona_About_me_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Sub Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Hy ! I am Brian miller', 'persona-core' ),
+				'default' => esc_html__( 'ABOUT ME', 'persona-core' ),
 				'placeholder' => esc_html__( 'Type your sub title here', 'persona-core' ),
 				'label_block' => true,
 			]
@@ -122,7 +122,7 @@ class Persona_About_me_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Creative UI/UX designer', 'persona-core' ),
+				'default' => esc_html__( 'My name is micael, I’m a Designer based in Australia and this is a selection of my personal and professional work.', 'persona-core' ),
 				'placeholder' => esc_html__( 'Type your title here', 'persona-core' ),
 				'label_block' => true,
 			]
@@ -133,7 +133,7 @@ class Persona_About_me_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Description', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'Hi! I am a UI/UX Designer - creating bold & brave interface design for companies all across the world.', 'persona-core' ),
+				'default' => esc_html__( 'Over the past 12 years, I have worked with a diverse range of clients, from startups to fortune 500 companies. I love crafting interfaces that delight users and help businesses grow. lorem ipsum dolor sit amet, consectet adipiscing spendisse iperdiet.', 'persona-core' ),
 				'placeholder' => esc_html__( 'Type your content here', 'persona-core' ),
 			]
 		);
@@ -156,7 +156,7 @@ class Persona_About_me_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Button Text', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'book a call', 'persona-core' ),
+				'default' => esc_html__( 'DOWNLOAD CV', 'persona-core' ),
 				'placeholder' => esc_html__( 'Type your button text here', 'persona-core' ),
 				'label_block' => true,
 			]
@@ -181,92 +181,6 @@ class Persona_About_me_Widget extends Widget_Base {
 
 		$this->end_controls_section();
 
-
-
-		/** Image Section */
-		$this->start_controls_section(
-			'persoan_hero_img_section',
-			[
-				'label' => esc_html__( 'Hero Image', 'persona-core' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'hero_image',
-			[
-				'label' => esc_html__( 'Choose Image', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::MEDIA,
-				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
-			]
-		);
-
-		$this->end_controls_section();
-
-
-		/** Social Section */
-		$this->start_controls_section(
-			'persoan_hero_img_social',
-			[
-				'label' => esc_html__( 'Social', 'persona-core' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$repeater = new \Elementor\Repeater();
-
-		$repeater->add_control(
-			'icon',
-			[
-				'label' => esc_html__( 'Icon', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'default' => [
-					'value' => 'fas fa-circle',
-					'library' => 'fa-solid',
-				],
-				'recommended' => [
-					'fa-solid' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-					'fa-regular' => [
-						'circle',
-						'dot-circle',
-						'square-full',
-					],
-				],
-			]
-		);
-
-		$repeater->add_control(
-			'icon_url',
-			[
-				'label' => esc_html__( 'URL', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( '#' , 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
-			'list',
-			[
-				'label' => esc_html__( 'Social List', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'list_title' => esc_html__( 'Title #1', 'textdomain' ),
-					],
-				],
-			]
-		);
-
-
-		$this->end_controls_section();
 	}
 
 	/**
@@ -280,8 +194,8 @@ class Persona_About_me_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		if ( ! empty( $settings['hero_button_url']['url'] ) ) {
-			$this->add_link_attributes( 'hero_button_url', $settings['hero_button_url'] );
+		if ( ! empty( $settings['persona_button_url']['url'] ) ) {
+			$this->add_link_attributes( 'persona_button_url', $settings['persona_button_url'] );
 		}
 
 		?>
@@ -293,14 +207,24 @@ class Persona_About_me_Widget extends Widget_Base {
                   <div class="row justify-content-center">
                      <div class="col-xxl-10 col-xl-10 col-lg-11 col-md-10">
                         <div class="about__wrapper-9">
-                           <span class="about-subtitle">ABOUT ME</span>
-                           <h3 class="about-title">My name is <span>micael</span>, I’m a <span>Designer</span> based in <span>Australia</span> and this is a <span>selection</span> of my personal and <span>professional</span> work.</h3>
+						   <?php if(!empty($settings['persona_sub_title'])): ?>
+                           <span class="about-subtitle"><?php echo esc_html( $settings['persona_sub_title'] ); ?></span>
+						   <?php endif; ?>
+						   <?php if(!empty($settings['persona_title'])): ?>
+                           <h3 class="about-title"><?php echo wp_kses_post( $settings['persona_title'] ); ?></h3>
+						   <?php endif; ?>
 
-                           <p>Over the past 12 years, I've worked with a diverse range of clients, from startups to fortune 500 companies. I love crafting interfaces that delight users and help businesses grow. lorem ipsum dolor sit amet, consectet adipiscing spendisse iperdiet.</p>
+						   <?php if(!empty($settings['persona_text'])): ?>
+                           <p><?php echo esc_html( $settings['persona_text'] ); ?></p>
+						   <?php endif; ?>
 
+						   <?php if(!empty($settings['persona_button_text'])): ?>
                            <div class="about__btn-9">
-                              <a href="https://weblearnbd.net/wp/bioxlab/wp-content/uploads/2022/09/demo-cv.pdf" target="_blank" class="tp-btn-5 tp-btn-5-white">Download CV</a>
+                              <a <?php $this->print_render_attribute_string( 'persona_button_url' ); ?> class="tp-btn-5 tp-btn-5-white"> 
+							  <?php echo esc_html( $settings['persona_button_text'] ); ?> 
+                              </a>
                            </div>
+						   <?php endif; ?>
                         </div>
                      </div>
                   </div>
