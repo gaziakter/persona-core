@@ -220,9 +220,11 @@ class Persona_Icon_box_Widget extends Widget_Base {
 								<?php endif; ?>
                               </span>
                            </div>
+						   <?php if(!empty($settings['icon_url'])): ?>
                            <div class="services__btn-9">
                               <a href="<?php echo esc_url($settings['icon_url']); ?>"><i class="fa-light fa-arrow-up-right"></i></a>
                            </div>
+						   <?php endif; ?>
                         </div>
                         <div class="services__content-9">
 							<?php if(!empty($settings['persona_sub_title'])): ?>
@@ -230,7 +232,13 @@ class Persona_Icon_box_Widget extends Widget_Base {
 						   <?php endif; ?>
 						   <?php if(!empty($settings['persona_title'])): ?>
                            <h3 class="services__title-9">
-                              <a href="<?php echo esc_url($settings['icon_url']); ?>"><?php echo esc_html($settings['persona_title']); ?></a>
+						   <?php if(!empty($settings['icon_url'])): ?>
+							<a href="<?php echo esc_url($settings['icon_url']); ?>"><?php echo esc_html($settings['persona_title']); ?></a>
+							<?php else: ?>
+								<?php echo esc_html($settings['persona_title']); ?>
+							<?php endif; ?>
+
+
                            </h3>
 						   <?php endif; ?>
                         </div>
