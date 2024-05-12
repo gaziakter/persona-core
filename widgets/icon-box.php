@@ -212,12 +212,12 @@ class Persona_Icon_box_Widget extends Widget_Base {
                         <div class="services__item-9-top d-flex align-items-start justify-content-between">
                            <div class="services__icon-9">
                               <span>
-                                 <svg width="47" height="42" viewBox="0 0 47 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5.06035 29.4262L12.5801 37.0285C17.8613 42.3677 19.6652 42.2798 24.8812 37.0285L36.9867 24.79C41.203 20.5275 42.2679 17.6931 36.9867 12.3539L29.467 4.75152C23.838 -0.939241 21.3821 0.488942 17.1659 4.75152L5.06035 16.99C-0.133935 22.2633 -0.568603 23.7354 5.06035 29.4262Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path opacity="0.4" d="M38.5975 32.1286L37.1631 34.5236C35.1419 37.9292 36.7067 40.7197 40.6405 40.7197C44.5742 40.7197 46.139 37.9292 44.1178 34.5236L42.6834 32.1286C41.5533 30.239 39.7059 30.239 38.5975 32.1286Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path opacity="0.4" d="M1.21484 22.1312C13.2986 18.8134 26.0344 18.7036 38.1616 21.8456L39.2483 22.1312" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                 </svg>  
-                                 <img src="assets/img/services/9/services-icon-shape.png" alt="">                               
+							  	<?php if(!empty($settings['persona_select_icon'] == 'icon')): ?>
+									<?php \Elementor\Icons_Manager::render_icon( $settings['icon'], [ 'aria-hidden' => 'true' ] ); ?>
+								<?php else: ?>
+									<?php echo $settings['persona_svg_icon']; ?>
+									<img src="<?php echo get_template_directory_uri().'/assets/img/services/9/services-icon-shape.png'; ?>" alt="">                               
+								<?php endif; ?>
                               </span>
                            </div>
                            <div class="services__btn-9">
