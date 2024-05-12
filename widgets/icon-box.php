@@ -221,14 +221,18 @@ class Persona_Icon_box_Widget extends Widget_Base {
                               </span>
                            </div>
                            <div class="services__btn-9">
-                              <a href="services-details.html"><i class="fa-light fa-arrow-up-right"></i></a>
+                              <a href="<?php echo esc_url($settings['icon_url']); ?>"><i class="fa-light fa-arrow-up-right"></i></a>
                            </div>
                         </div>
                         <div class="services__content-9">
-                           <span class="services-project">86 Project</span>
+							<?php if(!empty($settings['persona_sub_title'])): ?>
+                           <span class="services-project"><?php echo esc_html($settings['persona_sub_title']); ?></span>
+						   <?php endif; ?>
+						   <?php if(!empty($settings['persona_title'])): ?>
                            <h3 class="services__title-9">
-                              <a href="services-details.html">Website design</a>
+                              <a href="<?php echo esc_url($settings['icon_url']); ?>"><?php echo esc_html($settings['persona_title']); ?></a>
                            </h3>
+						   <?php endif; ?>
                         </div>
                      </div>
 
