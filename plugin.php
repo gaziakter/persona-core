@@ -128,6 +128,7 @@ class Persona_Core_Plugin {
 		require_once( __DIR__ . '/widgets/heading.php' );
 		require_once( __DIR__ . '/widgets/heading.php' );
 		require_once( __DIR__ . '/widgets/button.php' );
+		require_once( __DIR__ . '/widgets/portfolio-list.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Persona_Hero_Widget() );
@@ -136,6 +137,7 @@ class Persona_Core_Plugin {
 		$widgets_manager->register( new Widgets\Persona_Icon_box_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Heading_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Button_Widget() );
+		$widgets_manager->register( new Widgets\Persona_Portfolio_list_Widget() );
 		$widgets_manager->register( new Widgets\Inline_Editing() );
 	}
 
