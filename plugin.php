@@ -126,6 +126,8 @@ class Persona_Core_Plugin {
 		require_once( __DIR__ . '/widgets/process.php' );
 		require_once( __DIR__ . '/widgets/icon-box.php' );
 		require_once( __DIR__ . '/widgets/heading.php' );
+		require_once( __DIR__ . '/widgets/heading.php' );
+		require_once( __DIR__ . '/widgets/button.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Persona_Hero_Widget() );
@@ -133,6 +135,7 @@ class Persona_Core_Plugin {
 		$widgets_manager->register( new Widgets\Persona_Processs_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Icon_box_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Heading_Widget() );
+		$widgets_manager->register( new Widgets\Persona_Button_Widget() );
 		$widgets_manager->register( new Widgets\Inline_Editing() );
 	}
 
