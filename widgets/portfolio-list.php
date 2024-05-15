@@ -100,9 +100,9 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 
 		/** Process Section */
 		$this->start_controls_section(
-			'persoan_process_section',
+			'persoan_item_list_section',
 			[
-				'label' => esc_html__( 'Process List', 'persona-core' ),
+				'label' => esc_html__( 'Portfolio List', 'persona-core' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -111,7 +111,7 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 
 
 		$repeater->add_control(
-			'process_sub_title',
+			'item_sub_title',
 			[
 				'label' => esc_html__( 'Sub Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
@@ -121,7 +121,7 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 		);
 
 		$repeater->add_control(
-			'process_title',
+			'item_title',
 			[
 				'label' => esc_html__( 'Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
@@ -131,17 +131,7 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 		);
 
 		$repeater->add_control(
-			'process_content',
-			[
-				'label' => esc_html__( 'Content', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'I design beautifully simple things,and i love what i do.' , 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
-		$repeater->add_control(
-			'process_image',
+			'item_image',
 			[
 				'label' => esc_html__( 'Choose Image', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
@@ -152,20 +142,19 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 		);
 
 		$repeater->add_control(
-			'process_author_image',
+			'item_url',
 			[
-				'label' => esc_html__( 'Choose Author Image', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::MEDIA,
-				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
+				'label' => esc_html__( 'URL', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( '#' , 'persona-core' ),
+				'label_block' => true,
 			]
 		);
 
 		$this->add_control(
-			'persona_process_list',
+			'persona_item_list',
 			[
-				'label' => esc_html__( 'Process List', 'persona-core' ),
+				'label' => esc_html__( 'Portfolio List', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'default' => [
@@ -197,59 +186,56 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		if ( ! empty( $settings['hero_button_url']['url'] ) ) {
-			$this->add_link_attributes( 'hero_button_url', $settings['hero_button_url'] );
-		}
-
+	
 		?>
 
-		<!-- features area start -->
-         <section class="features__area pt-140 pb-140">
-            <div class="container">
-               <div class="row">
-                  <div class="col-xl-4 col-lg-4 col-md-6">
-                     <div class="features__wrapper-9 mr-30">
+         <!-- portfolio area start -->
+         <section class="portfolio__area portfolio__overlay-9 fix">
+            <div class="container-fluid gx-0">
+               <div class="row gx-0">
+                  <div class="col-xxl-12">
+                     <div class="portfolio__slider-9 has-scrollbar p-relative">
+                        <div class="portfolio__slider-active-9 swiper-container">
+                           <div class="swiper-wrapper">
 
-					 	<?php foreach($settings['persona_process_list'] as $key => $item): 
-							
-							$active = ($key == 1)? 'active' : '';
-							$index = $key+1;
-						?>
-                        <div class="features__content-9 features-item-content <?php echo esc_attr($active); ?>" rel="features-img-<?php echo esc_attr($index); ?>">
-                           <span><?php echo esc_html( $item['process_sub_title'] ); ?></span>
-                           <h3 class="features__title-9"><?php echo esc_html( $item['process_title'] ); ?> </h3>
-                        </div>
-						<?php endforeach; ?>
+						   	<?php foreach($settings['persona_item_list'] as $key => $item): ?>
 
-                     </div>
-                  </div>
-                  <div class="col-xl-8 col-lg-8 col-md-6 d-none d-md-block">
-                     <div class="features__thumb-wrapper-9 pl-20">
-                        <div id="features-item-thumb" class="features-img-2">
-								
-							<?php foreach($settings['persona_process_list'] as $key => $item): 
-								$active = ($key == 1)? 'active' : '';
-								$index = $key+1;
-							?>
-                           <div class="features__thumb-9 transition-3 features-img-<?php echo esc_attr($index); ?> <?php echo esc_attr($active); ?>">
-                              <img src="<?php echo esc_url( $item['process_image']['url'] ); ?>" alt="">
-                              <div class="features__thumb-9-content">
-                                 <p><?php echo esc_html( $item['process_content'] ); ?></p>
+                              <div class="portfolio__item-9 w-img swiper-slide wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+								<?php if(!empty($item['item_image'])): ?>
+                                 <div class="portfolio__thumb-9" style="background-image: url(<?php echo esc_url( $item['item_image']['url']); ?>)"></div>
+                                 <?php endif; ?>
+								 <div class="portfolio__content-9">
 
-                                 <div class="features-users">
-                                    <img src="<?php echo esc_url( $item['process_author_image']['url'] ); ?>" alt="">
+								 	<?php if(!empty($item['item_sub_title'])): ?>
+                                    <div class="portfolio__tag-9">
+                                       <span>
+                                          <a href="#"><?php echo esc_html( $item['item_sub_title'] ); ?></a>
+                                       </span>
+                                    </div>
+									<?php endif; ?>
+
+									<?php if(!empty($item['item_title'])): ?>
+                                    <h3 class="portfolio__title-9">
+                                       <a href="<?php echo esc_url( $item['item_url'] ); ?>"><?php echo esc_html( $item['item_title'] ); ?></a>
+                                    </h3>
+									<?php endif; ?>
                                  </div>
                               </div>
-                           </div>
-						   <?php endforeach; ?>
+							  <?php endforeach; ?>
 
+                           </div>
                         </div>
+                        <div class="portfolio__nav-9 d-none d-sm-block">
+                           <button type="button" class="portfolio-button-prev-9"><i class="fa-regular fa-chevron-left"></i></button>
+                           <button type="button" class="portfolio-button-next-9"><i class="fa-regular fa-chevron-right"></i></button>
+                        </div>
+                        <div class="tp-scrollbar mt-70 mb-50 grey-bg-12"></div>
                      </div>
                   </div>
                </div>
             </div>
          </section>
-         <!-- features area end -->
+         <!-- portfolio area end -->
 
 		<?php
 	}
