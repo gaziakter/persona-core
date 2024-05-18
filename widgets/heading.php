@@ -107,6 +107,18 @@ class Persona_Heading_Widget extends Widget_Base {
 		);
 
 		$this->add_control(
+			'center_content',
+			[
+				'label' => esc_html__( 'Center Content', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__( 'On', 'persona-core' ),
+				'label_off' => esc_html__( 'Off', 'persona-core' ),
+				'return_value' => 'yes',
+				'default' => 'no',
+			]
+		);
+
+		$this->add_control(
 			'persona_sub_title',
 			[
 				'label' => esc_html__( 'Sub Title', 'persona-core' ),
@@ -155,9 +167,11 @@ class Persona_Heading_Widget extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 
+		$is_center = $settings['center_content'] ? 'is-center' : '';
+
 		?>
 
-        <div class="section__title-wrapper mb-65">
+        <div class="section__title-wrapper-9 mb-65 <?php echo esc_attr( $is_center ); ?>">
 
             <?php if(!empty($settings['persona_sub_title'])): ?>
             <span class="section__title-pre-9"> <?php echo esc_html( $settings['persona_sub_title'] ); ?></span>
