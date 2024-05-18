@@ -100,32 +100,31 @@ class Persona_Exprience_Widget extends Widget_Base {
 
 		/** Process Section */
 		$this->start_controls_section(
-			'persoan_item_list_section',
+			'persoan_exprience_section',
 			[
-				'label' => esc_html__( 'Portfolio List', 'persona-core' ),
+				'label' => esc_html__( 'Persona Exprience List', 'persona-core' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$repeater = new \Elementor\Repeater();
 
-
+		$repeater->add_control(
+			'item_title',
+			[
+				'label' => esc_html__( 'Product designer', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Product designer' , 'persona-core' ),
+				'label_block' => true,
+			]
+		);
+        
 		$repeater->add_control(
 			'item_sub_title',
 			[
 				'label' => esc_html__( 'Sub Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'STRATEGY' , 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
-		$repeater->add_control(
-			'item_title',
-			[
-				'label' => esc_html__( 'Title', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Concept' , 'persona-core' ),
+				'default' => esc_html__( 'Microsoft Edge' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
@@ -147,6 +146,16 @@ class Persona_Exprience_Widget extends Widget_Base {
 				'label' => esc_html__( 'URL', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( '#' , 'persona-core' ),
+				'label_block' => true,
+			]
+		);
+
+        $repeater->add_control(
+			'item_duration',
+			[
+				'label' => esc_html__( 'Expricen Duration', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'April 2020 - Present' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
@@ -186,57 +195,41 @@ class Persona_Exprience_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-	
+        if ( ! empty( $settings['item_url']['url'] ) ) {
+			$this->add_link_attributes( 'item_url', $settings['item_url'] );
+        }
 		?>
 
-         <!-- portfolio area start -->
-         <section class="portfolio__area portfolio__overlay-9 fix">
-            <div class="container-fluid gx-0">
-               <div class="row gx-0">
-                  <div class="col-xxl-12">
-                     <div class="portfolio__slider-9 has-scrollbar p-relative">
-                        <div class="portfolio__slider-active-9 swiper-container">
-                           <div class="swiper-wrapper">
-
-						   	<?php foreach($settings['persona_item_list'] as $key => $item): ?>
-
-                              <div class="portfolio__item-9 w-img swiper-slide wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
-								<?php if(!empty($item['item_image'])): ?>
-                                 <div class="portfolio__thumb-9" style="background-image: url(<?php echo esc_url( $item['item_image']['url']); ?>)"></div>
-                                 <?php endif; ?>
-								 <div class="portfolio__content-9">
-
-								 	<?php if(!empty($item['item_sub_title'])): ?>
-                                    <div class="portfolio__tag-9">
-                                       <span>
-                                          <a href="#"><?php echo esc_html( $item['item_sub_title'] ); ?></a>
-                                       </span>
-                                    </div>
-									<?php endif; ?>
-
-									<?php if(!empty($item['item_title'])): ?>
-                                    <h3 class="portfolio__title-9">
-                                       <a href="<?php echo esc_url( $item['item_url'] ); ?>"><?php echo esc_html( $item['item_title'] ); ?></a>
-                                    </h3>
-									<?php endif; ?>
-                                 </div>
+                        <?php foreach($settings['persona_item_list'] as $key => $item): ?>
+                        <div class="career__item transition-3 white-bg d-sm-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
+                           <div class="career__info d-sm-flex align-items-center">
+                              <div class="career__logo mr-20">
+                                 <span>
+                                    <img src="<?php echo esc_url( $item['item_image']['url']); ?>" alt="">
+                                 </span>
                               </div>
-							  <?php endforeach; ?>
-
+                              <div class="career__info-content">
+                                 <h3 class="career__info-title"><?php echo esc_html( $item['item_title'] ); ?></h3>
+                                 <span class="career__info-designation"><?php echo esc_html( $item['item_sub_title'] ); ?></span>
+                              </div>
+                           </div>
+                           <div class="career__year text-sm-end">
+                              <div class="career__btn">
+                                 <a href="<?php echo esc_url( $item['item_url'] ); ?>" class="career-link-btn">
+                                    <span>
+                                       <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M17.7392 15.2608L18.0502 5.05021L7.83967 5.36134" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          <path d="M5.32384 17.7797L18.0518 5.05176" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                       </svg>                                                                               
+                                    </span>                                       
+                                 </a>
+                              </div>
+                              <div class="career__year-info">
+                                 <p><?php echo esc_html( $item['item_duration'] ); ?></p>
+                              </div>
                            </div>
                         </div>
-                        <div class="portfolio__nav-9 d-none d-sm-block">
-                           <button type="button" class="portfolio-button-prev-9"><i class="fa-regular fa-chevron-left"></i></button>
-                           <button type="button" class="portfolio-button-next-9"><i class="fa-regular fa-chevron-right"></i></button>
-                        </div>
-                        <div class="tp-scrollbar mt-70 mb-50 grey-bg-12"></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!-- portfolio area end -->
-
+                        <?php endforeach; ?>
 		<?php
 	}
 }
