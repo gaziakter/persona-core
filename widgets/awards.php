@@ -112,19 +112,19 @@ class Persona_Awards_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_title',
 			[
-				'label' => esc_html__( 'Product designer', 'persona-core' ),
+				'label' => esc_html__( 'Award Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Product designer' , 'persona-core' ),
+				'default' => esc_html__( 'Modern painting award jump' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
-        
+          
 		$repeater->add_control(
 			'item_sub_title',
 			[
 				'label' => esc_html__( 'Sub Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Microsoft Edge' , 'persona-core' ),
+				'default' => esc_html__( 'Runner Up - Decor of the week' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
@@ -153,9 +153,9 @@ class Persona_Awards_Widget extends Widget_Base {
         $repeater->add_control(
 			'item_duration',
 			[
-				'label' => esc_html__( 'Expricen Duration', 'persona-core' ),
+				'label' => esc_html__( 'Award year', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'April 2020 - Present' , 'persona-core' ),
+				'default' => esc_html__( 'Art direction 2021' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
@@ -199,37 +199,58 @@ class Persona_Awards_Widget extends Widget_Base {
 			$this->add_link_attributes( 'item_url', $settings['item_url'] );
         }
 		?>
-
-                        <?php foreach($settings['persona_item_list'] as $key => $item): ?>
-                        <div class="career__item transition-3 white-bg d-sm-flex align-items-center justify-content-between wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                           <div class="career__info d-sm-flex align-items-center">
-                              <div class="career__logo mr-20">
-                                 <span>
-                                    <img src="<?php echo esc_url( $item['item_image']['url']); ?>" alt="">
-                                 </span>
+                    <div class="award__item-wrapper-9">
+                    <?php foreach($settings['persona_item_list'] as $key => $item): ?>
+                        <div class="award__item-9 p-relative wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
+                           <div class="row align-items-center">
+                              <div class="col-xl-3 col-lg-3 col-md-3">
+                                 <div class="award__topic">
+                                    <p><?php echo esc_html( $item['item_duration'] ); ?></p>
+                                 </div>
                               </div>
-                              <div class="career__info-content">
-                                 <h3 class="career__info-title"><?php echo esc_html( $item['item_title'] ); ?></h3>
-                                 <span class="career__info-designation"><?php echo esc_html( $item['item_sub_title'] ); ?></span>
+                              <div class="col-xl-7 col-lg-7 col-md-7">
+                                 <div class="award__content-9">
+                                    <h3 class="award__title-9">
+                                       <a href="<?php echo esc_url( $item['item_url'] ); ?>" class="tp-img-reveal tp-img-reveal-item" data-img="<?php echo esc_url( $item['item_image']['url']); ?>" data-fx="1" style=""><?php echo esc_html( $item['item_title'] ); ?><div class="tp-img-reveal-wrapper" style="top: 331px; left: 1030px; opacity: 0;"><div class="tp-img-reveal-wrapper__inner" style="overflow: hidden; transform: translate(100%, 0%) matrix(1, 0, 0, 1, 0, 0);">
+                <div class="tp-img-reveal-wrapper__img" style="background-image: url(<?php echo esc_url( $item['item_image']['url']); ?>); transform: translate(-100%, 0%) matrix(1, 0, 0, 1, 0, 0);">
+                    <div class="tp-hover-wrapper"> 
+                        <span class="tp-hover-subtitle"></span>
+                        <h3 class="tp-hover-title"></h3>
+                        <p></p>
+                        <div class="tp-hover-meta">
+                            <span>
+                                <a href="#"></a>
+                            </span>
+                            <span>
+                                <a href="#"></a>
+                            </span>
+                            <span>
+                                <a href="#"></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div></div></a>
+                                    </h3>
+                                    <p><?php echo esc_html( $item['item_sub_title'] ); ?></p>
+                                 </div>
                               </div>
-                           </div>
-                           <div class="career__year text-sm-end">
-                              <div class="career__btn">
-                                 <a href="<?php echo esc_url( $item['item_url'] ); ?>" class="career-link-btn">
-                                    <span>
-                                       <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M17.7392 15.2608L18.0502 5.05021L7.83967 5.36134" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                          <path d="M5.32384 17.7797L18.0518 5.05176" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                       </svg>                                                                               
-                                    </span>                                       
-                                 </a>
-                              </div>
-                              <div class="career__year-info">
-                                 <p><?php echo esc_html( $item['item_duration'] ); ?></p>
+                              <div class="col-xl-2 col-lg-2 col-md-2">
+                                 <div class="award__btn-9 text-md-end">
+                                    <a href="<?php echo esc_url( $item['item_url'] ); ?>" class="career-link-btn">
+                                       <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M12.7334 1L21 9.00007L12.7334 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          <path d="M0.999999 8.99756H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                       </svg>                                          
+                                    </a>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
+
+                     </div>
+
 		<?php
 	}
 }
