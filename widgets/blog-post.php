@@ -101,55 +101,19 @@ class Persona_Blog_post_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'persoan_blog_post_section',
 			[
-				'label' => esc_html__( 'Persona Blog post', 'persona-core' ),
+				'label' => esc_html__( 'Persona post', 'persona-core' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$this->add_control(
-			'center_content',
+			'post_per_page',
 			[
-				'label' => esc_html__( 'Center Content', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'On', 'persona-core' ),
-				'label_off' => esc_html__( 'Off', 'persona-core' ),
-				'return_value' => 'yes',
-				'default' => 'no',
+				'label' => esc_html__( 'Post Per Page', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'default' => 3,
 			]
 		);
-
-		$this->add_control(
-			'persona_sub_title',
-			[
-				'label' => esc_html__( 'Sub Title', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'PAST PROJECTS', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your sub title here', 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
-			'persona_title',
-			[
-				'label' => esc_html__( 'Title', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'The work I did for client.', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your title here', 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
-			'persona_text',
-			[
-				'label' => esc_html__( 'Description', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'Over the past 12 years, I have worked with a diverse range of clients.', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your content here', 'persona-core' ),
-			]
-		);
-		
 
 		$this->end_controls_section();
 
@@ -169,7 +133,7 @@ class Persona_Blog_post_Widget extends Widget_Base {
 
 		$args = array(
 			'post_type' => 'post',
-			'posts_per_page' => 3,
+			'posts_per_page' => $settings['post_per_page'],
 		);
 
 		$query = new \WP_Query($args);
@@ -187,7 +151,7 @@ class Persona_Blog_post_Widget extends Widget_Base {
 							<div class="blog__item-9 mb-30 wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
 								<div class="blog__thumb-9 w-img fix">
 								<a href="blog-details.html">
-									<img src="assets/img/blog/9/blog-1.jpg" alt="">
+									<img src="<?php echo get_template_directory_uri().'/assets/img/blog/9/blog-1.jpg'; ?>" alt="">
 								</a>
 								</div>
 								<div class="blog__content-9">
