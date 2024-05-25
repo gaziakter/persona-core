@@ -133,6 +133,7 @@ class Persona_Core_Plugin {
 		require_once( __DIR__ . '/widgets/exprience.php' );
 		require_once( __DIR__ . '/widgets/awards.php' );
 		require_once( __DIR__ . '/widgets/testimonial.php' );
+		require_once( __DIR__ . '/widgets/blog-post.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Persona_Hero_Widget() );
@@ -147,6 +148,7 @@ class Persona_Core_Plugin {
 		$widgets_manager->register( new Widgets\Persona_Exprience_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Awards_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Testimonial_Widget() );
+		$widgets_manager->register( new Widgets\Persona_Blog_post_Widget() );
 	}
 
 	/**
