@@ -137,6 +137,17 @@ class Persona_Blog_post_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'post_exclude',
+			[
+				'label' => esc_html__( 'Select Exclude Post', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options' => get_all_post(),
+			]
+		);
+
 		$this->end_controls_section();
 
 	}
