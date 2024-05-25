@@ -166,6 +166,13 @@ class Persona_Blog_post_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+
+		$args = array(
+			'post_type' => 'post',
+			'posts_per_page' => 3,
+		);
+
+		$query = new \WP_Query($args);
 		?>
 
          <!-- blog area start -->
@@ -173,28 +180,34 @@ class Persona_Blog_post_Widget extends Widget_Base {
             <div class="container">
                <div class="row">
 
-                  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                     <div class="blog__item-9 mb-30 wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
-                        <div class="blog__thumb-9 w-img fix">
-                           <a href="blog-details.html">
-                              <img src="assets/img/blog/9/blog-1.jpg" alt="">
-                           </a>
-                        </div>
-                        <div class="blog__content-9">
-                           <div class="blog__meta-9">
-                              <span>
-                                 <a href="#">24 October 2022</a>
-                              </span>
-                              <span>
-                                 <a href="#">Design</a>
-                              </span>
-                           </div>
-                           <h3 class="blog__title-9">
-                              <a href="blog-details.html">Logo design trends to avoid in 2022.</a>
-                           </h3>
-                        </div>
-                     </div>
-                  </div>
+				<?php if($query->have_posts()): ?>
+					<?php while($query->have_posts()): ?>
+						<?php $query->the_post(); ?>
+						<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+							<div class="blog__item-9 mb-30 wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+								<div class="blog__thumb-9 w-img fix">
+								<a href="blog-details.html">
+									<img src="assets/img/blog/9/blog-1.jpg" alt="">
+								</a>
+								</div>
+								<div class="blog__content-9">
+								<div class="blog__meta-9">
+									<span>
+										<a href="#">24 October 2022</a>
+									</span>
+									<span>
+										<a href="#">Design</a>
+									</span>
+								</div>
+								<h3 class="blog__title-9">
+									<a href="blog-details.html">Logo design trends to avoid in 2022.</a>
+								</h3>
+								</div>
+							</div>
+						</div>
+				  <?php endwhile; ?>
+				  <?php wp_reset_postdata(); ?>
+				<?php endif; ?>
 
                </div>
             </div>
