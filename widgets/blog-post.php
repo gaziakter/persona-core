@@ -99,9 +99,9 @@ class Persona_Blog_post_Widget extends Widget_Base {
 	protected function register_controls() {
 
 		$this->start_controls_section(
-			'persoan_title_section',
+			'persoan_blog_post_section',
 			[
-				'label' => esc_html__( 'Title and Content', 'persona-core' ),
+				'label' => esc_html__( 'Persona Blog post', 'persona-core' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -166,25 +166,40 @@ class Persona_Blog_post_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-		$is_center = $settings['center_content'] ? 'is-center' : '';
-
 		?>
 
-        <div class="section__title-wrapper-9 mb-65 <?php echo esc_attr( $is_center ); ?>">
+         <!-- blog area start -->
+         <section class="blog__area grey-bg-12 pt-115 pb-90 p-relative z-index-1">
+            <div class="container">
+               <div class="row">
 
-            <?php if(!empty($settings['persona_sub_title'])): ?>
-            <span class="section__title-pre-9"> <?php echo esc_html( $settings['persona_sub_title'] ); ?></span>
-            <?php endif; ?>
+                  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+                     <div class="blog__item-9 mb-30 wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+                        <div class="blog__thumb-9 w-img fix">
+                           <a href="blog-details.html">
+                              <img src="assets/img/blog/9/blog-1.jpg" alt="">
+                           </a>
+                        </div>
+                        <div class="blog__content-9">
+                           <div class="blog__meta-9">
+                              <span>
+                                 <a href="#">24 October 2022</a>
+                              </span>
+                              <span>
+                                 <a href="#">Design</a>
+                              </span>
+                           </div>
+                           <h3 class="blog__title-9">
+                              <a href="blog-details.html">Logo design trends to avoid in 2022.</a>
+                           </h3>
+                        </div>
+                     </div>
+                  </div>
 
-            <?php if(!empty($settings['persona_title'])): ?>
-            <h3 class="section__title-9"><?php echo wp_kses_post( $settings['persona_title'] ); ?></h3>
-            <?php endif; ?>
-
-            <?php if(!empty($settings['persona_text'])): ?>
-            <p><?php echo esc_html( $settings['persona_text'] ); ?></p>
-			<?php endif; ?>
-        </div>
+               </div>
+            </div>
+         </section>
+         <!-- blog area end -->
 		<?php
 	}
 }
