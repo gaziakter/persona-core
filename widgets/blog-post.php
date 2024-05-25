@@ -133,7 +133,7 @@ class Persona_Blog_post_Widget extends Widget_Base {
 
 		$args = array(
 			'post_type' => 'post',
-			'posts_per_page' => $settings['post_per_page'],
+			'posts_per_page' => !empty($settings['post_per_page']) ? $settings['post_per_page']: -1,
 		);
 
 		$query = new \WP_Query($args);
@@ -145,26 +145,27 @@ class Persona_Blog_post_Widget extends Widget_Base {
                <div class="row">
 
 				<?php if($query->have_posts()): ?>
-					<?php while($query->have_posts()): ?>
-						<?php $query->the_post(); ?>
+					<?php while($query->have_posts()): $query->the_post();?>
+						<?php $category = get_the_category( get_the_ID()); ?>
+
 						<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
 							<div class="blog__item-9 mb-30 wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
 								<div class="blog__thumb-9 w-img fix">
-								<a href="blog-details.html">
-									<img src="<?php echo get_template_directory_uri().'/assets/img/blog/9/blog-1.jpg'; ?>" alt="">
+								<a href="<?php the_permalink(); ?>">
+									<?php the_post_thumbnail(); ?>
 								</a>
 								</div>
 								<div class="blog__content-9">
 								<div class="blog__meta-9">
 									<span>
-										<a href="#">24 October 2022</a>
+										<a href="<?php the_permalink(); ?>"><?php echo get_the_date(); ?></a>
 									</span>
 									<span>
-										<a href="#">Design</a>
+									<a href="#"><?php echo esc_html($category[0]->name); ?></a>
 									</span>
 								</div>
 								<h3 class="blog__title-9">
-									<a href="blog-details.html">Logo design trends to avoid in 2022.</a>
+									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 								</h3>
 								</div>
 							</div>
