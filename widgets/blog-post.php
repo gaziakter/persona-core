@@ -115,6 +115,28 @@ class Persona_Blog_post_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'cat_list',
+			[
+				'label' => esc_html__( 'Select Category', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options' => post_cat(),
+			]
+		);
+
+		$this->add_control(
+			'cat_exclude',
+			[
+				'label' => esc_html__( 'Select Exclude Category', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::SELECT2,
+				'label_block' => true,
+				'multiple' => true,
+				'options' => post_cat(),
+			]
+		);
+
 		$this->end_controls_section();
 
 	}
@@ -134,6 +156,14 @@ class Persona_Blog_post_Widget extends Widget_Base {
 		$args = array(
 			'post_type' => 'post',
 			'posts_per_page' => !empty($settings['post_per_page']) ? $settings['post_per_page']: -1,
+			'tax_query' => array(
+				array(
+				'taxonomy' => 'category',
+				'field' => 'slug',
+				'terms' => !empty($settings['cat_exclude']) ? $settings['cat_exclude'] : $settings['cat_list'],
+				'operator' => !empty($settings['cat_exclude']) ? 'NOT IN' : 'IN',
+				),
+			),
 		);
 
 		$query = new \WP_Query($args);
