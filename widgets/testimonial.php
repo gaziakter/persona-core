@@ -100,9 +100,9 @@ class Persona_Testimonial_Widget extends Widget_Base {
 
 		/** Process Section */
 		$this->start_controls_section(
-			'persoan_exprience_section',
+			'persoan_testimonial_section',
 			[
-				'label' => esc_html__( 'Persona Exprience List', 'persona-core' ),
+				'label' => esc_html__( 'Persona Testimonial List', 'persona-core' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -112,9 +112,9 @@ class Persona_Testimonial_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_title',
 			[
-				'label' => esc_html__( 'Product designer', 'persona-core' ),
+				'label' => esc_html__( 'Testimonial Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Product designer' , 'persona-core' ),
+				'default' => esc_html__( 'Awesome product features' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
@@ -122,9 +122,9 @@ class Persona_Testimonial_Widget extends Widget_Base {
 		$repeater->add_control(
 			'item_sub_title',
 			[
-				'label' => esc_html__( 'Sub Title', 'persona-core' ),
+				'label' => esc_html__( 'Client Name', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Microsoft Edge' , 'persona-core' ),
+				'default' => esc_html__( 'Shanelle Blake' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
@@ -140,22 +140,12 @@ class Persona_Testimonial_Widget extends Widget_Base {
 			]
 		);
 
-		$repeater->add_control(
-			'item_url',
-			[
-				'label' => esc_html__( 'URL', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( '#' , 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
         $repeater->add_control(
-			'item_duration',
+			'item_content',
 			[
-				'label' => esc_html__( 'Expricen Duration', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'April 2020 - Present' , 'persona-core' ),
+				'label' => esc_html__( 'Text Content', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'default' => esc_html__( ' majority suffered alteration in some form by injected humour randomised look embarrassing in middle text ” ' , 'persona-core' ),
 				'label_block' => true,
 			]
 		);
