@@ -148,6 +148,20 @@ class Persona_Blog_post_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'post_order',
+			[
+				'label' => esc_html__( 'Post Order', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'None',
+				'options' => [
+					'' => esc_html__( 'None', 'persona-core' ),
+					'ASC' => esc_html__( 'ASC', 'persona-core' ),
+					'DESC'  => esc_html__( 'DESC', 'persona-core' ),
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 	}
@@ -168,6 +182,7 @@ class Persona_Blog_post_Widget extends Widget_Base {
 			'post_type' => 'post',
 			'posts_per_page' => !empty($settings['post_per_page']) ? $settings['post_per_page']: -1,
 			'post__not_in' => $settings['post_exclude'],
+			'order' => $settings['post_order'],
 		);
 
 		if(!empty($settings['cat_list'] || $settings['cat_exclude'])){
