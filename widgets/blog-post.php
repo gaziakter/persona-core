@@ -167,15 +167,19 @@ class Persona_Blog_post_Widget extends Widget_Base {
 		$args = array(
 			'post_type' => 'post',
 			'posts_per_page' => !empty($settings['post_per_page']) ? $settings['post_per_page']: -1,
-			'tax_query' => array(
+			'post__not_in' => $settings['post_exclude'],
+		);
+
+		if(!empty($settings['cat_list'] || $settings['cat_exclude'])){
+			$args['tax_query'] = array(
 				array(
 				'taxonomy' => 'category',
 				'field' => 'slug',
 				'terms' => !empty($settings['cat_exclude']) ? $settings['cat_exclude'] : $settings['cat_list'],
 				'operator' => !empty($settings['cat_exclude']) ? 'NOT IN' : 'IN',
-				),
-			),
-		);
+				)
+			);
+		}
 
 		$query = new \WP_Query($args);
 		?>
