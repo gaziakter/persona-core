@@ -196,6 +196,39 @@ class Persona_Contact_Info_Widget extends Widget_Base {
 		
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'persona_contact-form_section',
+			[
+				'label' => esc_html__( 'Contact Form', 'persona-core' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+
+		$this->add_control(
+			'contact_form_title',
+			[
+				'label' => esc_html__( 'Contact form Title', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Let s get in touch with us' , 'persona-core' ),
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'contact_form_shortcode',
+			[
+				'label' => esc_html__( 'Contact form shortcode', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXTAREA,
+				'placeholder' => esc_html__( 'Insert here Shortcode' , 'persona-core' ),
+				'label_block' => true,
+			]
+		);
+
+
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -245,41 +278,10 @@ class Persona_Contact_Info_Widget extends Widget_Base {
                   </div>
                   <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-6">
                      <div class="contact__form-9 pt-20 pl-70">
-                        <h4 class="contact__form-9-title">Let's get in touch with us</h4>
+                        <h4 class="contact__form-9-title"><?php echo esc_html( $settings['contact_form_title'] ); ?></h4>
                         <div class="contact__form-9-inner">
                            <form id="contact-form" action="assets/mail.php" method="POST">
-                              <div class="row">
-                                 <div class="col-lg-6">
-                                    <div class="contact__input-9">
-                                       <input name="name" type="text" placeholder="Your name*">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="contact__input-9">
-                                       <input name="email" type="email" placeholder="Your email address*">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="contact__input-9">
-                                       <input name="phone" type="text" placeholder="Mobile number">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-6">
-                                    <div class="contact__input-9">
-                                       <input name="subject" type="text" placeholder="Subject">
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-12">
-                                    <div class="contact__input-9">
-                                       <textarea name="message" placeholder="How can we help you?"></textarea>
-                                    </div>
-                                 </div>
-                                 <div class="col-lg-12">
-                                    <div class="contact__btn-9">
-                                       <button type="submit" class="tp-btn-6 w-100">SEND MESSAGE</button>
-                                    </div>
-                                 </div>
-                              </div>
+							<?php echo do_shortcode($settings['contact_form_shortcode']); ?>
                            </form>
                            <p class="ajax-response"></p>
                         </div>
