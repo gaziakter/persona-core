@@ -52,3 +52,30 @@ function get_cat_slugs($categories = [],$delimeter = ' ',$term = 'slug'){
     }
     return implode($delimeter, $slugs);
 }
+
+/** Custom kses function */
+function persona_kses($persona_custion_tag = ''){
+
+    $persona_allowed_html = [
+		'svg'  => [
+			'xmlns'       => [],
+			'fill'        => [],
+			'viewbox'     => [],
+			'role'        => [],
+			'aria-hidden' => [],
+			'focusable'   => [],
+			'height'      => [],
+			'width'       => [],
+		],
+		'path' => [
+			'd'    => [],
+			'fill' => [],
+		],
+        'a' => [
+            'class' => [],
+            'href' => [],
+        ]
+    ];
+
+    return wp_kses($persona_custion_tag, $persona_allowed_html);
+}
