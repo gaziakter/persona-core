@@ -211,7 +211,7 @@ class Persona_About_me_Widget extends Widget_Base {
                            <span class="about-subtitle"><?php echo esc_html( $settings['persona_sub_title'] ); ?></span>
 						   <?php endif; ?>
 						   <?php if(!empty($settings['persona_title'])): ?>
-                           <h3 class="about-title"><?php echo wp_kses_post( $settings['persona_title'] ); ?></h3>
+                           <h3 class="about-title"><?php echo persona_kses( $settings['persona_title'] ); ?></h3>
 						   <?php endif; ?>
 
 						   <?php if(!empty($settings['persona_text'])): ?>
