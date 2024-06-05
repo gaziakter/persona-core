@@ -96,7 +96,14 @@ class Persona_Icon_box_Widget extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function register_controls() {
+
+	 protected function register_controls(){
+		$this->resister_content_section();
+		$this->resister_style_section();
+	 }
+
+	 /** Content Section */
+	protected function resister_content_section() {
 
 		$this->start_controls_section(
 			'persona_icon_box_section',
@@ -189,6 +196,32 @@ class Persona_Icon_box_Widget extends Widget_Base {
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( '#' , 'persona-core' ),
 				'label_block' => true,
+			]
+		);
+
+		$this->end_controls_section();
+
+	}
+
+	/** Style section */
+	protected function resister_style_section() {
+
+		$this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__( 'Style Section', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .services-project' => 'color: {{VALUE}}',
+				],
 			]
 		);
 
