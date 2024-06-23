@@ -111,14 +111,14 @@ class Persona_About_Bg_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Title', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'The work I did for client.', 'persona-core' ),
+				'default' => esc_html__( 'About Me', 'persona-core' ),
 				'placeholder' => esc_html__( 'Type your title here', 'persona-core' ),
 				'label_block' => true,
 			]
 		);
 
 		$this->add_control(
-			'hero_image',
+			'about_bg_image',
 			[
 				'label' => esc_html__( 'Choose Image', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
@@ -144,21 +144,20 @@ class Persona_About_Bg_Widget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-		$is_center = $settings['center_content'] ? 'is-center' : '';
-
 		?>
          <!-- about me area start -->
-         <section class="about__me about__me-spacing about__me-translate include-bg" data-background="assets/img/about/about-me-breadcrumb.jpg">
-            <div class="container">
+         <section class="about__me about__me-spacing about__me-translate include-bg" style="background-image: url();" data-background="assets/img/about/about-me-breadcrumb.jpg">
+            <?php if(!empty($settings['persona_title'])): ?>
+		 	<div class="container">
                <div class="row">
                   <div class="col-xl-12">
                      <div class="about__me-content" data-parallax='{"x": -100, "smoothness": 10}'>
-                        <h3 class="about__me-title">About Me</h3>
+                        <h3 class="about__me-title"><?php echo wp_kses_post( $settings['persona_title'] ); ?></h3>
                      </div>
                   </div>
                </div>
             </div>
+			<?php endif; ?>
          </section>
          <!-- about me area end -->
 
