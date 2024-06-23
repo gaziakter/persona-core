@@ -107,29 +107,6 @@ class Persona_About_Bg_Widget extends Widget_Base {
 		);
 
 		$this->add_control(
-			'center_content',
-			[
-				'label' => esc_html__( 'Center Content', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'On', 'persona-core' ),
-				'label_off' => esc_html__( 'Off', 'persona-core' ),
-				'return_value' => 'yes',
-				'default' => 'no',
-			]
-		);
-
-		$this->add_control(
-			'persona_sub_title',
-			[
-				'label' => esc_html__( 'Sub Title', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'PAST PROJECTS', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your sub title here', 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
 			'persona_title',
 			[
 				'label' => esc_html__( 'Title', 'persona-core' ),
@@ -141,12 +118,13 @@ class Persona_About_Bg_Widget extends Widget_Base {
 		);
 
 		$this->add_control(
-			'persona_text',
+			'hero_image',
 			[
-				'label' => esc_html__( 'Description', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'Over the past 12 years, I have worked with a diverse range of clients.', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your content here', 'persona-core' ),
+				'label' => esc_html__( 'Choose Image', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
 			]
 		);
 		
