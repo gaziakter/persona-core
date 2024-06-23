@@ -115,7 +115,7 @@ class Persona_About_me_Widget extends Widget_Base {
 				'options' => [
 					'style_01' => esc_html__( 'Style 01', 'persona-core' ),
 					'style_02' => esc_html__( 'Style 02', 'persona-core' ),
-					'style_02' => esc_html__( 'Style 03', 'persona-core' ),
+					'style_03' => esc_html__( 'Style 03', 'persona-core' ),
 				]
 			]
 		);
@@ -224,7 +224,7 @@ class Persona_About_me_Widget extends Widget_Base {
 		}
 
 		?>
-
+		<?php if($settings['design_style'] == 'style_01'): ?>
 		<!-- about area start -->
          <section class="about__area about__space-145">
             <div class="about__inner-9 black-bg wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
@@ -257,70 +257,11 @@ class Persona_About_me_Widget extends Widget_Base {
             </div>
          </section>
          <!-- about area end -->
-
-         <!-- slider area start -->
-         <section class="slider__area pt-40 p-relative fix d-none">
-            <div class="slider__item-9">
-               <div class="container">
-                  <div class="row align-items-end">
-                     <div class="col-xl-7 col-lg-6 col-md-7">
-                        <div class="slider__content-9">
-							<?php if(!empty($settings['hero_sub_title'])): ?>
-                           <span class="slider__title-pre-9"><?php echo esc_html( $settings['hero_sub_title'] ); ?></span>
-						   <?php endif; ?>
-						   <?php if(!empty($settings['hero_title'])): ?>
-                           <h3 class="slider__title-9"><?php echo wp_kses_post( $settings['hero_title'] ); ?></h3>
-						   <?php endif; ?>
-						   <?php if(!empty($settings['hero_text'])): ?>
-                           <p><?php echo esc_html( $settings['hero_text'] ); ?></p>
-						   <?php endif; ?>
-
-						   <?php if(!empty($settings['hero_button_text'])): ?>
-                           <div class="slider__btn-9 mb-85">
-                              <a <?php $this->print_render_attribute_string( 'hero_button_url' ); ?> class="tp-btn-5 tp-link-btn-3"> 
-							  <?php echo esc_html( $settings['hero_button_text'] ); ?> 
-                                 <span>
-                                    <i class="fa-regular fa-arrow-right"></i>
-                                 </span>
-                              </a>
-                           </div>
-						   <?php endif; ?>
-
-                           <div class="slider__social-9 d-flex flex-wrap align-items-center">
-                              <span>Check out my:</span>
-                              <ul>
-								<?php foreach($settings['list'] as $item): ?>
-                                 <li>
-                                    <a href="<?php echo esc_url( $item['icon_url'] ); ?>">
-									<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
-                                    </a>
-                                 </li>
-                                <?php endforeach; ?>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-					 <?php if(!empty($settings['hero_image']['url'])): ?>
-                     <div class="col-xl-5 col-lg-6 col-md-5 order-first order-md-last">
-                        <div class="slider__thumb-9 p-relative scene">
-                           <div class="slider__shape">
-                              <div class="slider__shape-20">
-                                 <img class="layer" data-depth=".2" src="<?php echo get_template_directory_uri(); ?>/assets/img/slider/9/slider-shape-1.png" alt="">
-                              </div>
-                              <div class="slider__shape-21">
-                                 <img class="layer" data-depth=".3" src="<?php echo get_template_directory_uri(); ?>/assets/img/slider/9/slider-shape-2.png" alt="">
-                              </div>
-                           </div>
-                           <img class="slider__thumb-9-main" src="<?php echo esc_url( $settings['hero_image']['url'] );?>" alt="">
-                        </div>
-                     </div>
-					 <?php endif; ?>
-                  </div>
-               </div>
-            </div>
-         </section>
-         <!-- slider area end -->
-
+		<?php elseif($settings['design_style'] == 'style_02'): ?>
+			<h1>Design style 02</h1>					
+		<?php else: ?>	
+			<h1>Design style 03</h1>					
+		<?php endif; ?>					
 		<?php
 	}
 }
