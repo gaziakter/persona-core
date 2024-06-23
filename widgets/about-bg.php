@@ -146,7 +146,7 @@ class Persona_About_Bg_Widget extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		?>
          <!-- about me area start -->
-         <section class="about__me about__me-spacing about__me-translate include-bg" style="background-image: url();" data-background="assets/img/about/about-me-breadcrumb.jpg">
+         <section class="about__me about__me-spacing about__me-translate include-bg" style="background-image: url(<?php echo esc_url( $settings['about_bg_image']['url'] ); ?>);">
             <?php if(!empty($settings['persona_title'])): ?>
 		 	<div class="container">
                <div class="row">
@@ -160,26 +160,6 @@ class Persona_About_Bg_Widget extends Widget_Base {
 			<?php endif; ?>
          </section>
          <!-- about me area end -->
-
-
-
-
-
-
-        <div class="section__title-wrapper-9 mb-65 <?php echo esc_attr( $is_center ); ?>">
-
-            <?php if(!empty($settings['persona_sub_title'])): ?>
-            <span class="section__title-pre-9"> <?php echo esc_html( $settings['persona_sub_title'] ); ?></span>
-            <?php endif; ?>
-
-            <?php if(!empty($settings['persona_title'])): ?>
-            <h3 class="section__title-9"><?php echo wp_kses_post( $settings['persona_title'] ); ?></h3>
-            <?php endif; ?>
-
-            <?php if(!empty($settings['persona_text'])): ?>
-            <p><?php echo esc_html( $settings['persona_text'] ); ?></p>
-			<?php endif; ?>
-        </div>
 		<?php
 	}
 }
