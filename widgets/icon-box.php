@@ -225,6 +225,20 @@ class Persona_Icon_box_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'popover-toggle',
+			[
+				'label' => esc_html__( 'Box', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::POPOVER_TOGGLE,
+				'label_off' => esc_html__( 'Default', 'textdomain' ),
+				'label_on' => esc_html__( 'Custom', 'textdomain' ),
+				'return_value' => 'yes',
+			]
+		);
+
+		$this->start_popover();
+		
+
 		$this->end_controls_section();
 	}
 

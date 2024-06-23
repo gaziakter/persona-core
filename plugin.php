@@ -135,6 +135,7 @@ class Persona_Core_Plugin {
 		require_once( __DIR__ . '/widgets/testimonial.php' );
 		require_once( __DIR__ . '/widgets/blog-post.php' );
 		require_once( __DIR__ . '/widgets/contact-info.php' );
+		require_once( __DIR__ . '/widgets/about-bg.php' );
 
 		// Register Widgets
 		$widgets_manager->register( new Widgets\Persona_Hero_Widget() );
@@ -151,6 +152,7 @@ class Persona_Core_Plugin {
 		$widgets_manager->register( new Widgets\Persona_Testimonial_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Blog_post_Widget() );
 		$widgets_manager->register( new Widgets\Persona_Contact_Info_Widget() );
+		$widgets_manager->register( new Widgets\Persona_About_Bg_Widget() );
 	}
 
 	/**
