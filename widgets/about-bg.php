@@ -148,6 +148,24 @@ class Persona_About_Bg_Widget extends Widget_Base {
 		$is_center = $settings['center_content'] ? 'is-center' : '';
 
 		?>
+         <!-- about me area start -->
+         <section class="about__me about__me-spacing about__me-translate include-bg" data-background="assets/img/about/about-me-breadcrumb.jpg">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-12">
+                     <div class="about__me-content" data-parallax='{"x": -100, "smoothness": 10}'>
+                        <h3 class="about__me-title">About Me</h3>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- about me area end -->
+
+
+
+
+
 
         <div class="section__title-wrapper-9 mb-65 <?php echo esc_attr( $is_center ); ?>">
 
