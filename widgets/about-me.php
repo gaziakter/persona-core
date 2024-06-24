@@ -120,17 +120,6 @@ class Persona_About_me_Widget extends Widget_Base {
 			]
 		);
 
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
-			'persoan_title_section',
-			[
-				'label' => esc_html__( 'Title and Content', 'persona-core' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
 		$this->add_control(
 			'persona_sub_title',
 			[
@@ -160,19 +149,6 @@ class Persona_About_me_Widget extends Widget_Base {
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'default' => esc_html__( 'Over the past 12 years, I have worked with a diverse range of clients, from startups to fortune 500 companies. I love crafting interfaces that delight users and help businesses grow. lorem ipsum dolor sit amet, consectet adipiscing spendisse iperdiet.', 'persona-core' ),
 				'placeholder' => esc_html__( 'Type your content here', 'persona-core' ),
-			]
-		);
-		
-
-		$this->end_controls_section();
-
-
-		/** Button Section */
-		$this->start_controls_section(
-			'persoan_button_section',
-			[
-				'label' => esc_html__( 'Button', 'persona-core' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
