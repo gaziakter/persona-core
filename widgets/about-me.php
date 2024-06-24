@@ -179,12 +179,10 @@ class Persona_About_me_Widget extends Widget_Base {
 			]
 		);
 
-		$repeater = new \Elementor\Repeater();
-
-		$repeater->add_control(
-			'social_url',
+		$this->add_control(
+			'persona_Facebook_url',
 			[
-				'label' => esc_html__( 'Link', 'persona-core' ),
+				'label' => esc_html__( 'Facebook URL', 'persona-core' ),
 				'type' => \Elementor\Controls_Manager::URL,
 				'options' => [ 'url', 'is_external', 'nofollow' ],
 				'default' => [
@@ -194,25 +192,8 @@ class Persona_About_me_Widget extends Widget_Base {
 					// 'custom_attributes' => '',
 				],
 				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
-			'persona_social',
-			[
-				'label' => esc_html__( 'Process List', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::REPEATER,
-				'fields' => $repeater->get_controls(),
-				'default' => [
-					[
-						'process_title' => esc_html__( 'Title #1','persona-core' ),
-						'process_content' => esc_html__( 'Title #1','persona-core' ),
-					],
-					[
-						'process_title' => esc_html__( 'Title #1','persona-core' ),
-						'process_content' => esc_html__( 'Title #1','persona-core' ),
-					],
-					'title_field' => '{{{process_title}}}',
+				'condition' => [
+					'design_style' => 'style_02',
 				],
 			]
 		);
