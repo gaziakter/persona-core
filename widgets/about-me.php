@@ -179,6 +179,44 @@ class Persona_About_me_Widget extends Widget_Base {
 			]
 		);
 
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'social_url',
+			[
+				'label' => esc_html__( 'Link', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+					// 'custom_attributes' => '',
+				],
+				'label_block' => true,
+			]
+		);
+
+		$this->add_control(
+			'persona_social',
+			[
+				'label' => esc_html__( 'Process List', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::REPEATER,
+				'fields' => $repeater->get_controls(),
+				'default' => [
+					[
+						'process_title' => esc_html__( 'Title #1','persona-core' ),
+						'process_content' => esc_html__( 'Title #1','persona-core' ),
+					],
+					[
+						'process_title' => esc_html__( 'Title #1','persona-core' ),
+						'process_content' => esc_html__( 'Title #1','persona-core' ),
+					],
+					'title_field' => '{{{process_title}}}',
+				],
+			]
+		);
+
 
 		$this->end_controls_section();
 
