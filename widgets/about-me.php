@@ -201,6 +201,8 @@ class Persona_About_me_Widget extends Widget_Base {
 
 		$this->end_controls_section();
 
+		
+
 	}
 
 	/**
@@ -253,7 +255,49 @@ class Persona_About_me_Widget extends Widget_Base {
          </section>
          <!-- about area end -->
 		<?php elseif($settings['design_style'] == 'style_02'): ?>
-			<h1>Design style 02</h1>					
+			         <!-- about me info area start -->
+					 <section class="about__me-info pb-90 pt-110">
+            <div class="container">
+               <div class="row">
+			   	  <?php if(!empty($settings['persona_sub_title'])): ?>
+                  <div class="col-xl-4 col-lg-3">
+                     <span class="about__me-info-subtitle"><?php echo esc_html( $settings['persona_sub_title'] ); ?></span>
+                  </div>
+				  <?php endif; ?>
+
+                  <div class="col-xl-8 col-lg-9">
+                     <div class="about__me-info-content wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+					 	<?php if(!empty($settings['persona_title'])): ?>
+                        <h4 class="about__me-info-title"><?php echo persona_kses( $settings['persona_title'] ); ?><img src="<?php echo esc_url(get_template_directory_uri().'/assets/img/about/about-me-title-icon.png'); ?>" alt=""></h4>
+						<?php endif; ?>
+						<?php if(!empty($settings['persona_text'])): ?>
+                           <p><?php echo esc_html( $settings['persona_text'] ); ?></p>
+						   <?php endif; ?>
+
+                        <div class="about__me-info-bottom d-sm-flex align-items-center mt-40">
+						<?php if(!empty($settings['persona_button_text'])): ?>
+                           <div class="about__me-info-btn mr-30">
+                              <a <?php $this->print_render_attribute_string( 'persona_button_url' ); ?> class="tp-btn">
+							  <?php echo esc_html( $settings['persona_button_text'] ); ?> 
+                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 7H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7 1L13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 </svg>
+                              </a>
+                           </div>
+						   <?php endif; ?>
+                           <div class="about__me-info-social">
+                              <a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+                              <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
+                              <a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- about me info area end -->				
 		<?php else: ?>	
 			<h1>Design style 03</h1>					
 		<?php endif; ?>					
