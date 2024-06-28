@@ -121,7 +121,7 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 		);
 
 		$this->end_controls_section();
-		
+
 
 		/** Process Section */
 		$this->start_controls_section(
@@ -129,6 +129,9 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Portfolio List', 'persona-core' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'condition' => [
+					'design_style' => 'style_01',
+				],
 			]
 		);
 
