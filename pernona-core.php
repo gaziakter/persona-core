@@ -7,8 +7,6 @@
  * Author:      Gazi Akter
  * Author URI:  https://gaziakter.com/
  * Text Domain: persona-core
- * Elementor tested up to: 3.5.0
- * Elementor Pro tested up to: 3.5.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

@@ -97,6 +97,31 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 	 * @access protected
 	 */
 	protected function register_controls() {
+		
+		$this->start_controls_section(
+			'persoan_design_section',
+			[
+				'label' => esc_html__( 'Select Design', 'persona-core' ),
+				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+			]
+		);
+
+		$this->add_control(
+			'design_style',
+			[
+				'label' => esc_html__( 'Selct Style', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'style_01',
+				'options' => [
+					'style_01' => esc_html__( 'Style 01', 'persona-core' ),
+					'style_02' => esc_html__( 'Style 02', 'persona-core' ),
+					'style_03' => esc_html__( 'Style 03', 'persona-core' ),
+				]
+			]
+		);
+
+		$this->end_controls_section();
+		
 
 		/** Process Section */
 		$this->start_controls_section(
