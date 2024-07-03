@@ -133,6 +133,19 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 		);
 
 		$repeater = new \Elementor\Repeater();
+		
+		$repeater->add_control(
+			'popup_style',
+			[
+				'label' => esc_html__( 'Selct Style', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::SELECT,
+				'default' => 'image_popup',
+				'options' => [
+					'image_popup' => esc_html__( 'Image Popup', 'persona-core' ),
+					'video_popup' => esc_html__( 'Video Popup', 'persona-core' ),
+				]
+			]
+		);
 
 
 		$repeater->add_control(
