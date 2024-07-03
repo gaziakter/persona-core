@@ -299,6 +299,15 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
                            <a href="<?php echo esc_url( $item['item_url'] ); ?>">
                               <img src="<?php echo esc_url( $item['item_image']['url']); ?>" alt="">
                            </a>
+						   <?php if(!empty($item['popup_style'] == 'video_popup')): ?>
+						   <div class="portfolio__grid-video">
+                              <a href="https://www.youtube.com/watch?v=1gyTUHP6ne8" class="portfolio-play-btn popup-video">
+                                 <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 11L0 21.3923V0.607696L18 11Z" fill="currentColor"/>
+                                 </svg>                                    
+                              </a>
+                           </div>
+						   <?php else: ?>
                            <div class="portfolio__grid-popup">
                               <a href="assets/img/portfolio/grid/portfolio-grid-5.jpg" class="popup-image">
                                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -307,6 +316,7 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
                                  </svg>                                    
                               </a>
                            </div>
+						   <?php endif; ?>
                         </div>
                         <div class="portfolio__grid-content">
                            <h3 class="portfolio__grid-title">
