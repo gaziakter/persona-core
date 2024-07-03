@@ -147,6 +147,19 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
 			]
 		);
 
+		$repeater->add_control(
+			'popup_video_url',
+			[
+				'label' => esc_html__( 'Popup Video URL', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( '#' , 'persona-core' ),
+				'label_block' => true,
+				'condition' => [
+					'popup_style' => 'video_popup',
+				],
+			]
+		);
+
 
 		$repeater->add_control(
 			'item_sub_title',
