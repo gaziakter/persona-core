@@ -301,7 +301,7 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
                            </a>
 						   <?php if(!empty($item['popup_style'] == 'video_popup')): ?>
 						   <div class="portfolio__grid-video">
-                              <a href="https://www.youtube.com/watch?v=1gyTUHP6ne8" class="portfolio-play-btn popup-video">
+                              <a href="<?php echo esc_url( $item['popup_video_url']); ?>" class="portfolio-play-btn popup-video">
                                  <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M18 11L0 21.3923V0.607696L18 11Z" fill="currentColor"/>
                                  </svg>                                    
@@ -309,7 +309,7 @@ class Persona_Portfolio_list_Widget extends Widget_Base {
                            </div>
 						   <?php else: ?>
                            <div class="portfolio__grid-popup">
-                              <a href="assets/img/portfolio/grid/portfolio-grid-5.jpg" class="popup-image">
+                              <a href="<?php echo esc_url( $item['item_image']['url']); ?>" class="popup-image">
                                  <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M14.1667 8.33341H0.833333C0.377778 8.33341 0 7.95564 0 7.50008C0 7.04453 0.377778 6.66675 0.833333 6.66675H14.1667C14.6222 6.66675 15 7.04453 15 7.50008C15 7.95564 14.6222 8.33341 14.1667 8.33341Z" fill="currentColor"/>
                                     <path d="M7.4974 15C7.04184 15 6.66406 14.6222 6.66406 14.1667V0.833333C6.66406 0.377778 7.04184 0 7.4974 0C7.95295 0 8.33073 0.377778 8.33073 0.833333V14.1667C8.33073 14.6222 7.95295 15 7.4974 15Z" fill="currentColor"/>
