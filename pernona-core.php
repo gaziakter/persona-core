@@ -11,6 +11,16 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+
+
+ /**
+  * Include files
+  */
+include_once('inc/functions.php');
+include_once('inc/portfolio-post-type.php');
+
+
+
 /**
  * Main Elementor Hello World Class
  *
@@ -22,8 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Any custom code should go inside Plugin Class in the plugin.php file.
  * @since 1.2.0
  */
-
-include_once('inc/functions.php');
 
 final class Persona_Core_Elements {
 
