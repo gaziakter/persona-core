@@ -52,6 +52,38 @@
 
 	register_post_type( 'persona-portfolio', $args );
 
+
+    $labels = array(
+		'name'              => _x( 'Portfolio Category', 'taxonomy general name', 'persona' ),
+		'singular_name'     => _x( 'Portfolio Category', 'taxonomy singular name', 'persona' ),
+		'search_items'      => __( 'Search Portfolio Category', 'persona' ),
+		'all_items'         => __( 'All Portfolio Category', 'persona' ),
+		'view_item'         => __( 'View Portfolio Category', 'persona' ),
+		'parent_item'       => __( 'Parent Portfolio Category', 'persona' ),
+		'parent_item_colon' => __( 'Parent Portfolio Category:', 'persona' ),
+		'edit_item'         => __( 'Edit Portfolio Category', 'persona' ),
+		'update_item'       => __( 'Update Portfolio Category', 'persona' ),
+		'add_new_item'      => __( 'Add New Portfolio Category', 'persona' ),
+		'new_item_name'     => __( 'New Portfolio  Category', 'persona' ),
+		'not_found'         => __( 'No Portfolio Category Found', 'persona' ),
+		'back_to_items'     => __( 'Back to Portfolio Category', 'persona' ),
+		'menu_name'         => __( 'Portfolio Categories', 'persona' ),
+	);
+
+	$args = array(
+		'labels'            => $labels,
+		'hierarchical'      => true,
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'portfolio-cat' ),
+		'show_in_rest'      => true,
+	);
+
+
+	register_taxonomy( 'portfolio-cat', 'persona-portfolio', $args );
+
  }
 
  add_action('init', 'persona_portfolio');
