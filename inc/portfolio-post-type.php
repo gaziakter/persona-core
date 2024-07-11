@@ -6,7 +6,7 @@
  * @since Version 3 digits
  */
 function persona_portfolios_template_include( $single_template ) {
-    if ( is_singular( 'harry-portfolio' ) ) {
+    if ( is_singular( 'persona-portfolio' ) ) {
         $single_template = __DIR__ . '/template/portfolio-single.php';
     }
     return $single_template;
