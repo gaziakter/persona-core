@@ -1,5 +1,9 @@
 <?php get_header();?>
 
+<?php $sub_title  = function_exists( 'get_field' ) ? get_field( 'portfolio_subtitle' ) : null;?>
+<?php $port_image = function_exists( 'get_field' ) ? get_field( 'portfolio_background_image' ) : null;?>
+
+
 <main>
 
 <!-- breadcrumb area start -->
@@ -8,15 +12,16 @@
       <div class="row">
          <div class="col-xxl-7">
             <div class="breadcrumb__content p-relative z-index-1">
+                <?php if ( function_exists( 'bcn_display' ) ): ?>
                <div class="breadcrumb__list">
-                  <span><a href="#">Home</a></span>
-                  <span class="dvdr"><i class="fa-solid fa-circle-small"></i></span>
-                  <span><a href="#">Business</a></span>
-                  <span class="dvdr"><i class="fa-solid fa-circle-small"></i></span>
-                  <span>Investment Trend Monitor: Top Trends in 2022  </span>
+               <?php bcn_display();?>
                </div>
-               <h3 class="breadcrumb__title">Making the world a more beautiful place.</h3>
-               <p>We are here to help you create the best <br>project out there!</p>
+               <?php endif;?>
+
+               <h3 class="breadcrumb__title"><?php the_title();?></h3>
+               <?php if ( !empty( $sub_title ) ): ?>
+               <p><?php echo wp_kses_post( $sub_title ); ?></p>
+               <?php endif;?>
             </div>
          </div>
       </div>
