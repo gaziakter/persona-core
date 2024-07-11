@@ -184,11 +184,14 @@ class Persona_Brand_Widget extends Widget_Base {
                         </div>
 </div>
 <?php else: ?>
+
 	<div class="brand__slider-5">
                            <div class="brand__slider-active-5-1" >
+						   <?php foreach ( $settings['persona_item_list'] as $key => $item ): ?>
                               <div class="brand__item-5">
 							  <img src="<?php echo esc_url( $item['item_image']['url'] ); ?>" alt="">
                               </div>
+							  <?php endforeach;?>
                            </div>
                         </div>
 
