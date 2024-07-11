@@ -102,34 +102,14 @@ class Persona_Brand_Widget extends Widget_Base {
 
         /** Process Section */
         $this->start_controls_section(
-            'persoan_exprience_section',
+            'persona_brand',
             [
-                'label' => esc_html__( 'Persona Exprience List', 'persona-core' ),
+                'label' => esc_html__( 'Persona Brand List', 'persona-core' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
             ]
         );
 
         $repeater = new \Elementor\Repeater();
-
-        $repeater->add_control(
-            'item_title',
-            [
-                'label'       => esc_html__( 'Award Title', 'persona-core' ),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Modern painting award jump', 'persona-core' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'item_sub_title',
-            [
-                'label'       => esc_html__( 'Sub Title', 'persona-core' ),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Runner Up - Decor of the week', 'persona-core' ),
-                'label_block' => true,
-            ]
-        );
 
         $repeater->add_control(
             'item_image',
@@ -139,26 +119,6 @@ class Persona_Brand_Widget extends Widget_Base {
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
                 ],
-            ]
-        );
-
-        $repeater->add_control(
-            'item_url',
-            [
-                'label'       => esc_html__( 'URL', 'persona-core' ),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( '#', 'persona-core' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'item_duration',
-            [
-                'label'       => esc_html__( 'Award year', 'persona-core' ),
-                'type'        => \Elementor\Controls_Manager::TEXT,
-                'default'     => esc_html__( 'Art direction 2021', 'persona-core' ),
-                'label_block' => true,
             ]
         );
 
@@ -196,60 +156,19 @@ class Persona_Brand_Widget extends Widget_Base {
      */
     protected function render() {
         $settings = $this->get_settings_for_display();
-        if ( !empty( $settings['item_url']['url'] ) ) {
-            $this->add_link_attributes( 'item_url', $settings['item_url'] );
-        }
         ?>
-                    <div class="award__item-wrapper-9">
-                    <?php foreach ( $settings['persona_item_list'] as $key => $item ): ?>
-                        <div class="award__item-9 p-relative wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                           <div class="row align-items-center">
-                              <div class="col-xl-3 col-lg-3 col-md-3">
-                                 <div class="award__topic">
-                                    <p><?php echo esc_html( $item['item_duration'] ); ?></p>
-                                 </div>
+
+<div class="brand__slider-5 brand__style-square">
+                        <div class="brand__slider-5">
+                           <div class="brand__slider-active-5">
+						   <?php foreach ( $settings['persona_item_list'] as $key => $item ): ?>
+                              <div class="brand__item-5">
+                                 <img src="<?php echo esc_url( $item['item_image']['url'] ); ?>" alt="">
                               </div>
-                              <div class="col-xl-7 col-lg-7 col-md-7">
-                                 <div class="award__content-9">
-                                    <h3 class="award__title-9">
-                                       <a href="<?php echo esc_url( $item['item_url'] ); ?>" class="tp-img-reveal tp-img-reveal-item" data-img="<?php echo esc_url( $item['item_image']['url'] ); ?>" data-fx="1" style=""><?php echo esc_html( $item['item_title'] ); ?><div class="tp-img-reveal-wrapper" style="top: 331px; left: 1030px; opacity: 0;"><div class="tp-img-reveal-wrapper__inner" style="overflow: hidden; transform: translate(100%, 0%) matrix(1, 0, 0, 1, 0, 0);">
-                <div class="tp-img-reveal-wrapper__img" style="background-image: url(<?php echo esc_url( $item['item_image']['url'] ); ?>); transform: translate(-100%, 0%) matrix(1, 0, 0, 1, 0, 0);">
-                    <div class="tp-hover-wrapper">
-                        <span class="tp-hover-subtitle"></span>
-                        <h3 class="tp-hover-title"></h3>
-                        <p></p>
-                        <div class="tp-hover-meta">
-                            <span>
-                                <a href="#"></a>
-                            </span>
-                            <span>
-                                <a href="#"></a>
-                            </span>
-                            <span>
-                                <a href="#"></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div></div></a>
-                                    </h3>
-                                    <p><?php echo esc_html( $item['item_sub_title'] ); ?></p>
-                                 </div>
-                              </div>
-                              <div class="col-xl-2 col-lg-2 col-md-2">
-                                 <div class="award__btn-9 text-md-end">
-                                    <a href="<?php echo esc_url( $item['item_url'] ); ?>" class="career-link-btn">
-                                       <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M12.7334 1L21 9.00007L12.7334 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                          <path d="M0.999999 8.99756H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                       </svg>
-                                    </a>
-                                 </div>
-                              </div>
+							  <?php endforeach;?>
+
                            </div>
                         </div>
-                    <?php endforeach;?>
-
                      </div>
 
 		<?php
