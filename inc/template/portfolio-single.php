@@ -7,7 +7,7 @@
 <main>
 
 <!-- breadcrumb area start -->
-<section class="breadcrumb__area breadcrumb__style-3 breadcrumb__spacing-2 include-bg pt-200 pb-235 grey-bg-4" data-background="assets/img/portfolio/breadcrumb/portfolio-breadcrumb-1.jpg">
+<section class="breadcrumb__area breadcrumb__style-3 breadcrumb__spacing-2 include-bg pt-200 pb-235 grey-bg-4" data-background="<?php echo esc_url( $port_image['url'] ); ?>">
    <div class="container">
       <div class="row">
          <div class="col-xxl-7">
