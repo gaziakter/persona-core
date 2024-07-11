@@ -5,13 +5,13 @@
  *
  * @since Version 3 digits
  */
-function harry_portfolios_template_include( $single_template ) {
+function persona_portfolios_template_include( $single_template ) {
     if ( is_singular( 'harry-portfolio' ) ) {
         $single_template = __DIR__ . '/template/portfolio-single.php';
     }
     return $single_template;
 }
-add_filter( 'template_include', 'harry_portfolios_template_include' );
+add_filter( 'template_include', 'persona_portfolios_template_include' );
 
 function persona_portfolio() {
 
@@ -49,12 +49,12 @@ function persona_portfolio() {
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => [ 'slug' => 'portfolio' ],
+        'rewrite'            => ['slug' => 'portfolio'],
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
         'menu_position'      => null,
-        'supports'           => [ 'title', 'editor', 'thumbnail', 'excerpt' ],
+        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt'],
     ];
 
     register_post_type( 'persona-portfolio', $args );
@@ -83,7 +83,7 @@ function persona_portfolio() {
         'show_ui'           => true,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => [ 'slug' => 'portfolio-cat' ],
+        'rewrite'           => ['slug' => 'portfolio-cat'],
         'show_in_rest'      => true,
     ];
 
