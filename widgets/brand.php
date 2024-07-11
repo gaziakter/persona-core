@@ -109,6 +109,19 @@ class Persona_Brand_Widget extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'design_style',
+            [
+                'label'   => esc_html__( 'Selct Style', 'persona-core' ),
+                'type'    => \Elementor\Controls_Manager::SELECT,
+                'default' => 'style_01',
+                'options' => [
+                    'style_01' => esc_html__( 'Scroll From Right', 'persona-core' ),
+                    'style_02' => esc_html__( 'Scroll From Left', 'persona-core' ),
+                ],
+            ]
+        );
+
         $repeater = new \Elementor\Repeater();
 
         $repeater->add_control(
@@ -157,7 +170,7 @@ class Persona_Brand_Widget extends Widget_Base {
     protected function render() {
         $settings = $this->get_settings_for_display();
         ?>
-
+		<?php if ( $settings['design_style'] == 'style_02' ): ?>
 <div class="brand__slider-5 brand__style-square">
                         <div class="brand__slider-5">
                            <div class="brand__slider-active-5">
@@ -169,7 +182,17 @@ class Persona_Brand_Widget extends Widget_Base {
 
                            </div>
                         </div>
-                     </div>
+</div>
+<?php else: ?>
+	<div class="brand__slider-5">
+                           <div class="brand__slider-active-5-1" >
+                              <div class="brand__item-5">
+							  <img src="<?php echo esc_url( $item['item_image']['url'] ); ?>" alt="">
+                              </div>
+                           </div>
+                        </div>
+
+<?php endif;?>
 
 		<?php
 }
