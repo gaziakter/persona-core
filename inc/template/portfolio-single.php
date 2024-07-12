@@ -3,6 +3,7 @@
 <?php $sub_title     = function_exists('get_field') ? get_field('portfolio_subtitle') : null; ?>
 <?php $port_image    = function_exists('get_field') ? get_field('portfolio_background_image') : null; ?>
 <?php $gallery_image = function_exists('get_field') ? get_field('portfolio_gallery') : null; ?>
+<?php $project_url = function_exists('get_field') ? get_field('project_url') : null; ?>
 
 
 <main>
