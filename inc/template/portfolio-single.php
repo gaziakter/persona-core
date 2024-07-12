@@ -63,7 +63,9 @@
             <div class="portfolio__details-info-wrapper">
                <div class="portfolio__details-info-content">
                   <h3 class="portfolio__details-info-box-title">Project Details</h3>
-                  <p>We’ve created a unique visual system and strategy across the wide existing spectrum of visible mobile applications and found yourself in a wide, straggling with wainscots.</p>
+                  <div class="portfolio-details-content">
+                     <?php the_content();?>
+                  </div>
                </div>
                <div class="portfolio__details-meta flex-wrap mb-40">
                   <div class="portfolio__details-meta-item d-flex align-items-start">
