@@ -36,13 +36,19 @@
       <div class="row">
          <?php if ( !empty( $gallery_image ) ): ?>
          <div class="col-xl-8">
-            <div class="portfolio__details-img-list">
+            <div class="portfolio__details-img-list position-relative">
                <div class="portfolio__details-img-list-box mb-10">
-                  <img src="assets/img/portfolio/list/portfolio-list-1.jpg" alt="">
-                  <div class="portfolio__details-img-list-social d-flex flex-column">
-                     <a href="#"><i class="fab fa-facebook-f"></i></a>
-                     <a href="#"><i class="fab fa-twitter"></i></a>
-                     <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <div class="postbox__share text-xl-end">
+                     <span><?php echo esc_html__( 'Share On:', 'persona' ); ?></span>
+                     <a href="https://www.linkedin.com/shareArticle?url=<?php the_permalink();?>" target="_blank">
+                           <i class="fa-brands fa-linkedin-in"></i>
+                     </a>
+                     <a href="https://twitter.com/intent/tweet?url=<?php the_permalink();?>&text=<?php the_title();?>" target="_blank">
+                           <i class="fab fa-twitter"></i>
+                     </a>
+                     <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink();?>" target="_blank">
+                           <i class="fab fa-facebook-f"></i>
+                     </a>
                   </div>
                </div>
                <?php foreach ( $gallery_image as $item ): ?>
