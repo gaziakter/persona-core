@@ -1,7 +1,8 @@
 <?php get_header();?>
 
-<?php $sub_title  = function_exists( 'get_field' ) ? get_field( 'portfolio_subtitle' ) : null;?>
-<?php $port_image = function_exists( 'get_field' ) ? get_field( 'portfolio_background_image' ) : null;?>
+<?php $sub_title     = function_exists( 'get_field' ) ? get_field( 'portfolio_subtitle' ) : null;?>
+<?php $port_image    = function_exists( 'get_field' ) ? get_field( 'portfolio_background_image' ) : null;?>
+<?php $gallery_image = function_exists( 'get_field' ) ? get_field( 'portfolio_gallery' ) : null;?>
 
 
 <main>
@@ -33,6 +34,7 @@
 <section class="portfolio__area pt-100 pb-120">
    <div class="container">
       <div class="row">
+         <?php if ( !empty( $gallery_image ) ): ?>
          <div class="col-xl-8">
             <div class="portfolio__details-img-list">
                <div class="portfolio__details-img-list-box mb-10">
@@ -43,17 +45,14 @@
                      <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                   </div>
                </div>
+               <?php foreach ( $gallery_image as $item ): ?>
                <div class="portfolio__details-img-list-box mb-10">
-                  <img src="assets/img/portfolio/list/portfolio-list-2.jpg" alt="">
+                  <img src="<?php echo esc_url( $item['url'] ); ?>" alt="">
                </div>
-               <div class="portfolio__details-img-list-box mb-10">
-                  <img src="assets/img/portfolio/list/portfolio-list-3.jpg" alt="">
-               </div>
-               <div class="portfolio__details-img-list-box mb-10">
-                  <img src="assets/img/portfolio/list/portfolio-list-4.jpg" alt="">
-               </div>
+               <?php endforeach;?>
             </div>
          </div>
+         <?php endif;?>
          <div class="col-xl-4">
             <div class="portfolio__details-info-wrapper">
                <div class="portfolio__details-info-content">
