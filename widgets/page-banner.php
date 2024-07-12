@@ -1,10 +1,11 @@
 <?php
+
 namespace PersonaCore\Widgets;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
  * Elementor Hello World
@@ -13,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  */
-class Persona_Page_bannner_Widget extends Widget_Base {
+class Persona_Page_bannner_Widget extends Widget_Base
+{
 
 	/**
 	 * Retrieve the widget name.
@@ -24,7 +26,8 @@ class Persona_Page_bannner_Widget extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-	public function get_name() {
+	public function get_name()
+	{
 		return 'persona-page-banner-widget';
 	}
 
@@ -37,8 +40,9 @@ class Persona_Page_bannner_Widget extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-	public function get_title() {
-		return __( 'Persona Page Banner', 'persona' );
+	public function get_title()
+	{
+		return __('Persona Page Banner', 'persona');
 	}
 
 	/**
@@ -50,7 +54,8 @@ class Persona_Page_bannner_Widget extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_icon() {
+	public function get_icon()
+	{
 		return 'eicon-posts-ticker';
 	}
 
@@ -68,8 +73,9 @@ class Persona_Page_bannner_Widget extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-	public function get_categories() {
-		return [ 'persona-category' ];
+	public function get_categories()
+	{
+		return ['persona-category'];
 	}
 
 	/**
@@ -83,8 +89,9 @@ class Persona_Page_bannner_Widget extends Widget_Base {
 	 *
 	 * @return array Widget scripts dependencies.
 	 */
-	public function get_script_depends() {
-		return [ 'elementor-hello-world' ];
+	public function get_script_depends()
+	{
+		return ['elementor-hello-world'];
 	}
 
 	/**
@@ -96,63 +103,54 @@ class Persona_Page_bannner_Widget extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function register_controls() {
+	protected function register_controls()
+	{
 
 		$this->start_controls_section(
-			'persoan_title_section',
+			'persoan_page_banner',
 			[
-				'label' => esc_html__( 'Title and Content', 'persona-core' ),
+				'label' => esc_html__('Page Banner Content', 'persona-core'),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$this->add_control(
-			'center_content',
+			'is_breadcrumb',
 			[
-				'label' => esc_html__( 'Center Content', 'persona-core' ),
+				'label' => esc_html__('Enable Breadcrumb', 'persona-core'),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'On', 'persona-core' ),
-				'label_off' => esc_html__( 'Off', 'persona-core' ),
+				'label_on' => esc_html__('On', 'persona-core'),
+				'label_off' => esc_html__('Off', 'persona-core'),
 				'return_value' => 'yes',
 				'default' => 'no',
 			]
 		);
 
 		$this->add_control(
-			'persona_sub_title',
-			[
-				'label' => esc_html__( 'Sub Title', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'PAST PROJECTS', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your sub title here', 'persona-core' ),
-				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
 			'persona_title',
 			[
-				'label' => esc_html__( 'Title', 'persona-core' ),
+				'label' => esc_html__('Title', 'persona-core'),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'The work I did for client.', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your title here', 'persona-core' ),
+				'default' => esc_html__('We Offer a Wide Range of Services', 'persona-core'),
+				'placeholder' => esc_html__('Type your title here', 'persona-core'),
 				'label_block' => true,
 			]
 		);
 
 		$this->add_control(
-			'persona_text',
+			'banner_bg',
 			[
-				'label' => esc_html__( 'Description', 'persona-core' ),
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'default' => esc_html__( 'Over the past 12 years, I have worked with a diverse range of clients.', 'persona-core' ),
-				'placeholder' => esc_html__( 'Type your content here', 'persona-core' ),
+				'label' => esc_html__( 'Choose Image', 'persona-core' ),
+				'type' => \Elementor\Controls_Manager::MEDIA,
+				'default' => [
+					'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
 			]
 		);
-		
+
+
 
 		$this->end_controls_section();
-
 	}
 
 	/**
@@ -164,27 +162,34 @@ class Persona_Page_bannner_Widget extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function render() {
+	protected function render()
+	{
 		$settings = $this->get_settings_for_display();
 
-		$is_center = $settings['center_content'] ? 'is-center' : '';
+		$is_breadcrumb = $settings['is_breadcrumb'];
 
-		?>
-
-        <div class="section__title-wrapper-9 mb-65 <?php echo esc_attr( $is_center ); ?>">
-
-            <?php if(!empty($settings['persona_sub_title'])): ?>
-            <span class="section__title-pre-9"> <?php echo esc_html( $settings['persona_sub_title'] ); ?></span>
-            <?php endif; ?>
-
-            <?php if(!empty($settings['persona_title'])): ?>
-            <h3 class="section__title-9"><?php echo wp_kses_post( $settings['persona_title'] ); ?></h3>
-            <?php endif; ?>
-
-            <?php if(!empty($settings['persona_text'])): ?>
-            <p><?php echo esc_html( $settings['persona_text'] ); ?></p>
-			<?php endif; ?>
-        </div>
-		<?php
+?>
+		<!-- breadcrumb area start -->
+		<section class="breadcrumb__area breadcrumb__style-6 p-relative include-bg pt-200 pb-120">
+			<div class="breadcrumb__bg-2 breadcrumb__overlay include-bg" style="background-image: url(<?php echo esc_url( $settings['banner_bg']['url'] );?>);"></div>
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-xxl-8 col-xl-8 col-lg-10">
+						<div class="breadcrumb__content text-center p-relative z-index-1">
+							<?php if (!empty($settings['persona_title'])) : ?>
+							<h3 class="breadcrumb__title"><?php echo wp_kses_post($settings['persona_title']); ?></h3>
+							<?php endif; ?>
+							<?php if(function_exists('bcn_display') && !empty($is_breadcrumb)): ?>
+							<div class="breadcrumb__list">
+								<?php bcn_display(); ?>
+							</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- breadcrumb area end -->
+<?php
 	}
 }
