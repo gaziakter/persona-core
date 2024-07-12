@@ -114,7 +114,7 @@
     ?>
 
     <!-- portfolio navigation area start -->
-    <?php if(!empty($prev_post) && !empty($next_post))  : ?>
+    <?php  if(!empty($prev_post) && !empty($next_post))  : ?>
 
     <section class="portfolio__navigation-area portfolio__more-border d-none d-md-block">
     <div class="container">

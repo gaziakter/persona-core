@@ -137,6 +137,7 @@ class Persona_Core_Plugin {
         require_once __DIR__ . '/widgets/contact-info.php';
         require_once __DIR__ . '/widgets/about-bg.php';
         require_once __DIR__ . '/widgets/brand.php';
+        require_once __DIR__ . '/widgets/page-banner.php';
 
         // Register Widgets
         $widgets_manager->register( new Widgets\Persona_Hero_Widget() );
@@ -155,6 +156,7 @@ class Persona_Core_Plugin {
         $widgets_manager->register( new Widgets\Persona_Contact_Info_Widget() );
         $widgets_manager->register( new Widgets\Persona_About_Bg_Widget() );
         $widgets_manager->register( new Widgets\Persona_Brand_Widget() );
+        $widgets_manager->register( new Widgets\Persona_Page_bannner_Widget() );
     }
 
     /**
